@@ -19,10 +19,16 @@ jobs:
           uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
           with:
             arguments: publish
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        - name: Create Release ✅
+          id: create_release
+          uses: actions/create-release@v1
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          with:
             release_name: ${{ github.ref_name }}
             draft: false
             prerelease: false
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
