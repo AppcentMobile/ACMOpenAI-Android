@@ -53,25 +53,23 @@ java {
     withSourcesJar()
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            register("maven", MavenPublication::class) {
-                groupId = "mobi.appcent"
-                artifactId = "ACMOpenAI-Android"
-                version = "1.0.0"
+publishing {
+    publications {
+        register("maven", MavenPublication::class) {
+            groupId = "mobi.appcent"
+            artifactId = "ACMOpenAI-Android"
+            version = "1.0.0"
 
-                from(components["java"])
+            from(components["java"])
 
-                pom {
-                    packaging = "jar"
-                    name.set("ACMOpenAI-Android")
-                    scm {
-                        url.set("https://github.com/AppcentMobile/ACMOpenAI-Android")
-                    }
+            pom {
+                packaging = "jar"
+                name.set("ACMOpenAI-Android")
+                scm {
+                    url.set("https://github.com/AppcentMobile/ACMOpenAI-Android")
                 }
-
             }
+
         }
     }
 }
