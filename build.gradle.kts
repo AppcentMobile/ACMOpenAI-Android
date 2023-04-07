@@ -12,7 +12,7 @@ buildscript {
 }
 plugins {
     id("java")
-    id("maven-publish")
+    `maven-publish`
     id("java-library")
     id("org.jetbrains.kotlin.jvm") version Versions.kotlinVersion
     `java-library`
@@ -55,7 +55,7 @@ java {
 
 publishing {
     publications {
-        register("maven", MavenPublication::class) {
+        create<MavenPublication>("maven") {
             groupId = "mobi.appcent"
             artifactId = "ACMOpenAI-Android"
             version = "1.0.0"
