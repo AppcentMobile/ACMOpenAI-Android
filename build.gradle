@@ -43,6 +43,7 @@ publishing {
             groupId = "mobi.appcent"
             artifactId = "ACMOpenAI-Android"
             version = "1.0.0"
+            from components.java
         }
     }
 }
