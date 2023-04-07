@@ -15,6 +15,7 @@ plugins {
     id("maven-publish")
     id("java-library")
     id("org.jetbrains.kotlin.jvm") version "1.7.20"
+    `java-library`
 }
 
 group = "mobi.appcent"
@@ -47,14 +48,30 @@ tasks {
     }
 }
 
-publishing {
-    publications {
-        create<MavenPublication>("maven") {
-            groupId = "mobi.appcent"
-            artifactId = "ACMOpenAI-Android"
-            version = "1.0.0"
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
 
-            from(components["java"])
+afterEvaluate {
+    publishing {
+        publications {
+            register("maven", MavenPublication::class) {
+                groupId = "mobi.appcent"
+                artifactId = "ACMOpenAI-Android"
+                version = "1.0.0"
+
+                from(components["java"])
+
+                pom {
+                    packaging = "jar"
+                    name.set("ACMOpenAI-Android")
+                    scm {
+                        url.set("https://github.com/AppcentMobile/ACMOpenAI-Android")
+                    }
+                }
+
+            }
         }
     }
 }
