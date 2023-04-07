@@ -7,9 +7,10 @@
 
 name: Gradle Package
 
-push:
-  branches:
-    - 'release/**'
+on:
+  push:
+    branches:
+      - 'release/**'
 
 jobs:
   build:
