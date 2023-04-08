@@ -16,8 +16,8 @@ plugins {
     id("org.jetbrains.kotlin.jvm") version Versions.kotlinVersion
 }
 
-group = "mobi.appcent"
-version = "1.0.0"
+group = AppConfig.groupId
+version = AppConfig.version
 
 repositories {
     mavenCentral()
@@ -26,16 +26,20 @@ repositories {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlinVersion}")
-    implementation("org.jetbrains.kotlin:kotlin-reflect:${Versions.kotlinVersion}")
+    implementation(Deps.kotlinJdk8)
+    implementation(Deps.kotlinReflect)
 
     //OkHtpp
-    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.10.0"))
-    implementation("com.squareup.okhttp3:okhttp")
-    implementation("com.squareup.okhttp3:logging-interceptor")
+    implementation(platform(Deps.okhttpBom))
+    implementation(Deps.okhttp)
+    implementation(Deps.okhttpLogging)
+    implementation(Deps.okhttpSSE)
 
     //Gson
-    implementation("com.google.code.gson:gson:2.10.1")
+    implementation(Deps.gson)
+
+    //Coroutines
+    implementation(Deps.coroutines)
 }
 
 java {
@@ -54,15 +58,15 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach 
 publishing {
     publications {
         create<MavenPublication>("maven") {
-            groupId = "mobi.appcent"
-            artifactId = "acmopenai-android"
-            version = "1.0.0"
+            groupId = AppConfig.groupId
+            artifactId = AppConfig.artifactId
+            version = AppConfig.version
 
             from(components["java"])
 
             pom {
                 packaging = "jar"
-                name.set("ACMOpenAI-Android")
+                name.set(AppConfig.name)
                 scm {
                     url.set("https://github.com/AppcentMobile/ACMOpenAI-Android")
                 }
