@@ -67,3 +67,7 @@ All URIs are relative to *https://api.openai.com/v1*
 
 <a name="documentation-for-models"></a>
 ## [Documentation for Models](docs)
+
+## License
+
+ * MIT ([LICENSE.md](LICENCE) or https://opensource.org/license/mit/)
