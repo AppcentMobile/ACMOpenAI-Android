@@ -55,7 +55,7 @@ publishing {
     publications {
         create<MavenPublication>("maven") {
             groupId = "mobi.appcent"
-            artifactId = "ACMOpenAI-Android"
+            artifactId = "acmopenai-android"
             version = "1.0.0"
 
             from(components["java"])
