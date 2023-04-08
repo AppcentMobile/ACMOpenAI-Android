@@ -7,14 +7,13 @@ buildscript {
         gradlePluginPortal()
     }
     dependencies {
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlinVersion}")
     }
 }
 plugins {
     java
     `maven-publish`
-    id("org.jetbrains.kotlin.plugin.sam.with.receiver") version Versions.kotlinVersion
     `java-library`
+    id("org.jetbrains.kotlin.jvm") version Versions.kotlinVersion
 }
 
 group = "mobi.appcent"
@@ -42,6 +41,14 @@ dependencies {
 java {
     withJavadocJar()
     withSourcesJar()
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 publishing {
