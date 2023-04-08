@@ -11,10 +11,9 @@ buildscript {
     }
 }
 plugins {
-    id("java")
+    java
     `maven-publish`
-    id("java-library")
-    id("org.jetbrains.kotlin.jvm") version Versions.kotlinVersion
+    id("org.jetbrains.kotlin.plugin.sam.with.receiver") version Versions.kotlinVersion
     `java-library`
 }
 
@@ -38,14 +37,6 @@ dependencies {
 
     //Gson
     implementation("com.google.code.gson:gson:2.10.1")
-}
-tasks {
-    compileKotlin {
-        kotlinOptions.jvmTarget = "1.8"
-    }
-    compileTestKotlin {
-        kotlinOptions.jvmTarget = "1.8"
-    }
 }
 
 java {
