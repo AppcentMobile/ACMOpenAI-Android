@@ -35,7 +35,7 @@ allprojects {
 }
 
 dependencies {
-        implementation 'com.github.AppcentMobile:ACMOpenAI-Android:1.0.0'
+   implementation 'com.github.AppcentMobile:ACMOpenAI-Android:1.0.0'
 }
 ```
 
