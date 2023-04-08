@@ -1,5 +1,5 @@
 # ACMOpenAI
-[![](https://jitpack.io/v/AppcentMobile/ACMOpenAI-Android.svg)](https://jitpack.io/#AppcentMobile/ACMOpenAI-Android)<br>
+[![](https://jitpack.io/v/AppcentMobile/ACMOpenAI-Android.svg)](https://jitpack.io/#AppcentMobile/ACMOpenAI-Android)[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)<br>
 ACMOpenAI is an unofficial library that help developers to use Open AI API easily.
 
 ## Installation
@@ -70,4 +70,4 @@ All URIs are relative to *https://api.openai.com/v1*
 
 ## License
 
- * MIT ([LICENSE](LICENCE) or https://opensource.org/license/mit/)
+ * MIT ([LICENSE](LICENSE) or https://opensource.org/license/mit/)
