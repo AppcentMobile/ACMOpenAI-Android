@@ -1,7 +1,6 @@
 # ACMOpenAI
-
+[![](https://jitpack.io/v/AppcentMobile/ACMOpenAI-Android.svg)](https://jitpack.io/#AppcentMobile/ACMOpenAI-Android)<br>
 ACMOpenAI is an unofficial library that help developers to use Open AI API easily.
-[![](https://jitpack.io/v/AppcentMobile/ACMOpenAI-Android.svg)](https://jitpack.io/#AppcentMobile/ACMOpenAI-Android)
 
 ## Installation
 ### Maven users
