@@ -1,19 +1,45 @@
 # ACMOpenAI
 
 ACMOpenAI is an unofficial library that help developers to use Open AI API easily.
+[![](https://jitpack.io/v/AppcentMobile/ACMOpenAI-Android.svg)](https://jitpack.io/#AppcentMobile/ACMOpenAI-Android)
 
 ## Installation
-Development continues
+### Maven users
 
-```
-gradle wrapper
+Add this dependency to your project's POM:
+
+```xml
+<repositories>
+  <repository>
+      <id>jitpack.io</id>
+      <url>https://jitpack.io</url>
+  </repository>
+</repositories>
+
+<dependency>
+    <groupId>com.github.AppcentMobile</groupId>
+    <artifactId>ACMOpenAI-Android</artifactId>
+    <version>1.0.0</version>
+</dependency>
 ```
 
-Then, run:
+### Gradle users
 
+Add this dependency to your project's build file:
+
+```groovy
+allprojects {
+  repositories {
+    ...
+    maven { url 'https://jitpack.io' }
+  }
+}
+
+dependencies {
+        implementation 'com.github.AppcentMobile:ACMOpenAI-Android:1.0.0'
+}
 ```
-./gradlew check assemble
-```
+
 
 This runs all tests and packages the library.
 
@@ -24,6 +50,3 @@ All URIs are relative to *https://api.openai.com/v1*
 
 <a name="documentation-for-models"></a>
 ## [Documentation for Models](docs)
-
-<a name="documentation-for-authorization"></a>
-## Documentation for Authorization
