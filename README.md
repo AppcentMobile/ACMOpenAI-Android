@@ -70,4 +70,4 @@ All URIs are relative to *https://api.openai.com/v1*
 
 ## License
 
- * MIT ([LICENSE.md](LICENCE) or https://opensource.org/license/mit/)
+ * MIT ([LICENSE](LICENCE) or https://opensource.org/license/mit/)
