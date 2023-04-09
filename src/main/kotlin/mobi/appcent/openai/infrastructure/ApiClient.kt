@@ -1,11 +1,18 @@
 package mobi.appcent.openai.infrastructure
 
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.*
 import mobi.appcent.openai.common.HeaderConstant
 import okhttp3.*
 import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
 import okhttp3.logging.HttpLoggingInterceptor
+import okhttp3.sse.EventSource
+import okhttp3.sse.EventSourceListener
+import okhttp3.sse.EventSources
+import okio.Buffer
 import java.io.File
 import java.util.concurrent.TimeUnit
 
@@ -78,11 +85,11 @@ open class ApiClient constructor(
         }
     }
 
-    inline fun <reified T> request(requestConfig: RequestConfig, body: Any? = null): ApiInfrastructureResponse<T?> {
+    fun createRequest(requestConfig: RequestConfig, body: Any? = null): Pair<String, Request> {
         val httpUrl = baseUrl.toHttpUrlOrNull() ?: throw IllegalStateException("baseUrl is invalid.")
 
         var urlBuilder = httpUrl.newBuilder()
-                .addPathSegments(requestConfig.path.trimStart('/'))
+            .addPathSegments(requestConfig.path.trimStart('/'))
 
         requestConfig.query.forEach { query ->
             query.value.forEach { queryValue ->
@@ -117,21 +124,16 @@ open class ApiClient constructor(
 
         headers.forEach { header -> request = request.addHeader(header.key, header.value.toString()) }
 
-        val realRequest = request.build()
-        val response = client?.newCall(realRequest)?.execute()
+        return accept to request.build()
+    }
+
+    inline fun <reified T> request(requestConfig: RequestConfig, body: Any? = null): ApiInfrastructureResponse<T?> {
+        val request = createRequest(requestConfig, body)
+        val response = client?.newCall(request.second)?.execute()
 
         when {
-            response?.isRedirect == true -> return Redirection(
-                    response.code,
-                    response.headers.toMultimap()
-            )
-            response?.isInformational == true -> return Informational(
-                    response.message,
-                    response.code,
-                    response.headers.toMultimap()
-            )
             response?.isSuccessful == true -> return Success(
-                    responseBody(response.body, accept) as T?,
+                    responseBody(response.body, request.first) as T?,
                     response.code,
                     response.headers.toMultimap()
             )
@@ -147,5 +149,41 @@ open class ApiClient constructor(
                     response?.headers?.toMultimap() ?: mapOf()
             )
         }
+    }
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    inline fun <reified T> collectEvent(requestConfig: RequestConfig, body: Any? = null): Flow<T?> = callbackFlow<T?> {
+        val request = createRequest(requestConfig, body)
+
+        val sseListener = object : EventSourceListener() {
+            override fun onEvent(eventSource: EventSource, id: String?, type: String?, data: String) {
+                if (data != "[DONE]") {
+                    val `object` = Serializer.gson.fromJson(data, T::class.java)
+                    trySend(`object`)
+                }
+            }
+
+            override fun onFailure(eventSource: EventSource, t: Throwable?, response: Response?) {
+                super.onFailure(eventSource, t, response)
+                t?.printStackTrace()
+            }
+
+            override fun onClosed(eventSource: EventSource) {
+                super.onClosed(eventSource)
+                this@callbackFlow.close()
+            }
+        }
+
+        val eventSource = client?.let {
+            EventSources.createFactory(it).newEventSource(request.second, sseListener)
+        }
+        eventSource?.request()
+        awaitClose {
+            eventSource?.cancel()
+        }
+    }.catch { e ->
+        // Handle any errors
+        e.printStackTrace()
+        emit(null)
     }
 }

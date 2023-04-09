@@ -28,8 +28,6 @@ class FilesApi: BaseApi() {
 
         return when (response.responseType) {
             ResponseType.Success -> (response as Success<*>).data as ListFilesResponse
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
             ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
         }
@@ -60,8 +58,6 @@ class FilesApi: BaseApi() {
 
         return when (response.responseType) {
             ResponseType.Success -> (response as Success<*>).data as OpenAIFile
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
             ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
         }
@@ -85,8 +81,6 @@ class FilesApi: BaseApi() {
 
         return when (response.responseType) {
             ResponseType.Success -> (response as Success<*>).data as DeleteFileResponse
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
             ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
         }
@@ -110,8 +104,6 @@ class FilesApi: BaseApi() {
 
         return when (response.responseType) {
             ResponseType.Success -> (response as Success<*>).data as OpenAIFile
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
             ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
         }
@@ -135,8 +127,6 @@ class FilesApi: BaseApi() {
 
         return when (response.responseType) {
             ResponseType.Success -> (response as Success<*>).data as kotlin.String
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
             ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
         }

@@ -29,8 +29,6 @@ class ImageApi: BaseApi() {
 
         return when (response.responseType) {
             ResponseType.Success -> (response as Success<*>).data as ImagesResponse
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
             ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
         }
@@ -71,8 +69,6 @@ class ImageApi: BaseApi() {
 
         return when (response.responseType) {
             ResponseType.Success -> (response as Success<*>).data as ImagesResponse
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
             ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
         }
@@ -108,8 +104,6 @@ class ImageApi: BaseApi() {
 
         return when (response.responseType) {
             ResponseType.Success -> (response as Success<*>).data as ImagesResponse
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
             ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
         }

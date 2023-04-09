@@ -1,7 +1,7 @@
 package mobi.appcent.openai.infrastructure
 
 enum class ResponseType {
-    Success, Informational, Redirection, ClientError, ServerError
+    Success, ClientError, ServerError
 }
 
 abstract class ApiInfrastructureResponse<T>(val responseType: ResponseType) {
@@ -14,17 +14,6 @@ class Success<T>(
         override val statusCode: Int = -1,
         override val headers: Map<String, List<String>> = mapOf()
 ) : ApiInfrastructureResponse<T>(ResponseType.Success)
-
-class Informational<T>(
-        val statusText: String,
-        override val statusCode: Int = -1,
-        override val headers: Map<String, List<String>> = mapOf()
-) : ApiInfrastructureResponse<T>(ResponseType.Informational)
-
-class Redirection<T>(
-        override val statusCode: Int = -1,
-        override val headers: Map<String, List<String>> = mapOf()
-) : ApiInfrastructureResponse<T>(ResponseType.Redirection)
 
 class ClientError<T>(
         val body: Any? = null,
