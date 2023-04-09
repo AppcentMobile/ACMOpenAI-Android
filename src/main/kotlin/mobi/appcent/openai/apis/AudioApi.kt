@@ -42,8 +42,6 @@ class AudioApi: BaseApi() {
 
         return when (response.responseType) {
             ResponseType.Success -> (response as Success<*>).data as CreateTranscriptionResponse
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
             ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
         }
@@ -79,8 +77,6 @@ class AudioApi: BaseApi() {
 
         return when (response.responseType) {
             ResponseType.Success -> (response as Success<*>).data as CreateTranslationResponse
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
             ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
         }

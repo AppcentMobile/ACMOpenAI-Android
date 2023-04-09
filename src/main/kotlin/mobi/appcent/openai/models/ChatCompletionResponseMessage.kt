@@ -19,7 +19,7 @@ package mobi.appcent.openai.models
  */
 data class ChatCompletionResponseMessage (
     /* The role of the author of this message. */
-    val role: String,
+    val role: String? = ChatCompletionRequestMessage.Role.ASSISTANT.value,
     /* The contents of the message */
-    val content: String
+    val content: String? = ""
 )

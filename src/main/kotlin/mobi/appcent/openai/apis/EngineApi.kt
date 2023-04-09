@@ -27,8 +27,6 @@ class EngineApi: BaseApi() {
 
         return when (response.responseType) {
             ResponseType.Success -> (response as Success<*>).data as ListEnginesResponse
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
             ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
         }
@@ -52,8 +50,6 @@ class EngineApi: BaseApi() {
 
         return when (response.responseType) {
             ResponseType.Success -> (response as Success<*>).data as Engine
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
             ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
         }

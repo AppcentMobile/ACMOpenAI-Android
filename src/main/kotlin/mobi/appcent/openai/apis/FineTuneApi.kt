@@ -28,8 +28,6 @@ class FineTuneApi: BaseApi() {
 
         return when (response.responseType) {
             ResponseType.Success -> (response as Success<*>).data as FineTune
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
             ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
         }
@@ -52,8 +50,6 @@ class FineTuneApi: BaseApi() {
 
         return when (response.responseType) {
             ResponseType.Success -> (response as Success<*>).data as ListFineTunesResponse
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
             ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
         }
@@ -77,8 +73,6 @@ class FineTuneApi: BaseApi() {
 
         return when (response.responseType) {
             ResponseType.Success -> (response as Success<*>).data as FineTune
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
             ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
         }
@@ -102,8 +96,6 @@ class FineTuneApi: BaseApi() {
 
         return when (response.responseType) {
             ResponseType.Success -> (response as Success<*>).data as FineTune
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
             ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
         }
@@ -128,8 +120,6 @@ class FineTuneApi: BaseApi() {
 
         return when (response.responseType) {
             ResponseType.Success -> (response as Success<*>).data as ListFineTuneEventsResponse
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
             ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
         }
@@ -153,8 +143,6 @@ class FineTuneApi: BaseApi() {
 
         return when (response.responseType) {
             ResponseType.Success -> (response as Success<*>).data as Model
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
             ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
         }
