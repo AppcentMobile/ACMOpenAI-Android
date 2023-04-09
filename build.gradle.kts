@@ -49,14 +49,6 @@ java {
     targetCompatibility = JavaVersion.VERSION_1_8
 }
 
-sourceSets.getByName("main") {
-    java.srcDir("src/main/kotlin")
-    java.srcDir("'build/generated/source/protos/main/java'")
-}
-sourceSets.getByName("test") {
-    java.srcDir("src/test/kotlin/")
-}
-
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
     kotlinOptions {
         jvmTarget = "1.8"
