@@ -9,8 +9,8 @@ buildscript {
     dependencies {
     }
 }
+
 plugins {
-    java
     `maven-publish`
     `java-library`
     id("org.jetbrains.kotlin.jvm") version Versions.kotlinVersion
@@ -26,9 +26,6 @@ repositories {
 }
 
 dependencies {
-    implementation(Deps.kotlinJdk8)
-    implementation(Deps.kotlinReflect)
-
     //OkHtpp
     implementation(platform(Deps.okhttpBom))
     implementation(Deps.okhttp)
@@ -39,7 +36,7 @@ dependencies {
     implementation(Deps.gson)
 
     //Coroutines
-    implementation(Deps.coroutines)
+    api(Deps.coroutines)
 }
 
 java {

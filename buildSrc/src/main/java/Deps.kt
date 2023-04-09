@@ -10,9 +10,7 @@ object Versions {
 
 object Deps {
     //Kotlin
-    const val kotlinJdk8 = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlinVersion}"
-    const val kotlinReflect = "org.jetbrains.kotlin:kotlin-reflect:${Versions.kotlinVersion}"
-    const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:${Versions.coroutinesVersion}"
+    const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutinesVersion}"
 
     //OkHttp
     const val okhttpBom = "com.squareup.okhttp3:okhttp-bom:${Versions.okhttpBomVersion}"
