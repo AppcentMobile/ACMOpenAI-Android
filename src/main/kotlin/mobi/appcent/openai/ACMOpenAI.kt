@@ -15,12 +15,13 @@ import mobi.appcent.openai.apis.*
 import mobi.appcent.openai.common.UrlConstant
 import mobi.appcent.openai.infrastructure.ApiClient
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 
 class ACMOpenAI private constructor(
     private var baseUrl: String,
     private var organization: String? = null,
     private var apiKey: String? = null,
-    private var isDebugging: Boolean = false,
+    private var logLevel: HttpLoggingInterceptor.Level = HttpLoggingInterceptor.Level.NONE,
     client: OkHttpClient? = null
 ) {
 
@@ -44,7 +45,7 @@ class ACMOpenAI private constructor(
             baseUrl = baseUrl,
             apiKey = apiKey,
             organization = organization,
-            debugging = isDebugging,
+            logLevel = logLevel,
             client = client,
         )
         bindApiClients()
@@ -67,14 +68,14 @@ class ACMOpenAI private constructor(
         private var organization: String? = null
         private var apiKey: String? = null
         private var client: OkHttpClient? = null
-        private var debugging: Boolean = false
+        private var logLevel: HttpLoggingInterceptor.Level = HttpLoggingInterceptor.Level.NONE
 
         fun baseUrl(url: String) = apply { this.baseUrl = url }
         fun organization(organization: String) = apply { this.organization = organization }
         fun apiKey(apiKey: String) = apply { this.apiKey = apiKey }
         fun client(client: OkHttpClient) = apply { this.client = client }
-        fun debugging(bool: Boolean) = apply { this.debugging = bool }
-        fun build(): ACMOpenAI = ACMOpenAI(baseUrl, organization, apiKey, debugging, client)
+        fun logLevel(logLevel: HttpLoggingInterceptor.Level) = apply { this.logLevel = logLevel }
+        fun build(): ACMOpenAI = ACMOpenAI(baseUrl, organization, apiKey, logLevel, client)
     }
 
     fun chat() = chatApi

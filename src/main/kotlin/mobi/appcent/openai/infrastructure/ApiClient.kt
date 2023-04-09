@@ -20,17 +20,14 @@ open class ApiClient constructor(
     val baseUrl: String,
     apiKey: String?,
     organization: String?,
-    debugging: Boolean = false,
+    logLevel: HttpLoggingInterceptor.Level,
     var client: OkHttpClient? = null
 ) {
 
     init {
         if (client == null) {
             val logging = HttpLoggingInterceptor()
-            logging.level = if (debugging)
-                HttpLoggingInterceptor.Level.BODY
-            else
-                HttpLoggingInterceptor.Level.NONE
+            logging.level = logLevel
 
             this.client = OkHttpClient.Builder()
                 .addInterceptor(AuthorizationInterceptor(apiKey, organization))
