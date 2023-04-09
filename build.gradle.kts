@@ -11,6 +11,7 @@ buildscript {
 }
 
 plugins {
+    java
     `maven-publish`
     `java-library`
     id("org.jetbrains.kotlin.jvm") version Versions.kotlinVersion
@@ -28,8 +29,8 @@ repositories {
 dependencies {
     //OkHtpp
     implementation(platform(Deps.okhttpBom))
-    implementation(Deps.okhttp)
-    implementation(Deps.okhttpLogging)
+    api(Deps.okhttp)
+    api(Deps.okhttpLogging)
     implementation(Deps.okhttpSSE)
 
     //Gson
