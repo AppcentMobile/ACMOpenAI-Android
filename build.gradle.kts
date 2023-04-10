@@ -37,7 +37,9 @@ dependencies {
     implementation(Deps.gson)
 
     //Coroutines
-    api(Deps.coroutines)
+    api(Deps.coroutines) {
+        this.isTransitive = true
+    }
 }
 
 java {
