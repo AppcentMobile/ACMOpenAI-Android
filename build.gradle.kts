@@ -7,6 +7,7 @@ buildscript {
         gradlePluginPortal()
     }
     dependencies {
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlinVersion}")
     }
 }
 
@@ -28,18 +29,16 @@ repositories {
 
 dependencies {
     //OkHtpp
-    implementation(platform(Deps.okhttpBom))
+    api(platform(Deps.okhttpBom))
     api(Deps.okhttp)
     api(Deps.okhttpLogging)
     implementation(Deps.okhttpSSE)
 
     //Gson
-    implementation(Deps.gson)
+    api(Deps.gson)
 
     //Coroutines
-    api(Deps.coroutines) {
-        this.isTransitive = true
-    }
+    api(Deps.coroutines)
 }
 
 java {
