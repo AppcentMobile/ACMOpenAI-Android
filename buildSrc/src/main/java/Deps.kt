@@ -5,7 +5,7 @@ object Versions {
     const val kotlinVersion = "1.5.31"
     const val okhttpBomVersion = "4.10.0"
     const val gsonVersion = "2.10.1"
-    const val coroutinesVersion = "1.5.2"
+    const val coroutinesVersion = "1.6.4"
 }
 
 object Deps {

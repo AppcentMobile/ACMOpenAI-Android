@@ -40,8 +40,8 @@ dependencies {
 
     //Coroutines
     api(Deps.coroutines)
-    api(Deps.coroutinesJdk8)
-    api(Deps.coroutinesSf4j)
+    implementation(Deps.coroutinesJdk8)
+    implementation(Deps.coroutinesSf4j)
 }
 
 java {
