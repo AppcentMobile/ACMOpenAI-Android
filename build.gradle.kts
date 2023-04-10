@@ -1,4 +1,5 @@
 import org.gradle.api.publish.maven.MavenPublication
+import org.jetbrains.kotlin.fir.resolve.withExpectedType
 
 buildscript {
 
@@ -39,6 +40,8 @@ dependencies {
 
     //Coroutines
     api(Deps.coroutines)
+    api(Deps.coroutinesJdk8)
+    api(Deps.coroutinesSf4j)
 }
 
 java {
