@@ -1,4 +1,5 @@
 import org.gradle.api.publish.maven.MavenPublication
+import org.jetbrains.kotlin.fir.resolve.withExpectedType
 
 buildscript {
 
@@ -7,8 +8,10 @@ buildscript {
         gradlePluginPortal()
     }
     dependencies {
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlinVersion}")
     }
 }
+
 plugins {
     java
     `maven-publish`
@@ -26,20 +29,23 @@ repositories {
 }
 
 dependencies {
+    //Kotlin
     implementation(Deps.kotlinJdk8)
     implementation(Deps.kotlinReflect)
 
     //OkHtpp
-    implementation(platform(Deps.okhttpBom))
-    implementation(Deps.okhttp)
-    implementation(Deps.okhttpLogging)
-    implementation(Deps.okhttpSSE)
+    api(platform(Deps.okhttpBom))
+    api(Deps.okhttp)
+    api(Deps.okhttpLogging)
+    api(Deps.okhttpSSE)
 
     //Gson
-    implementation(Deps.gson)
+    api(Deps.gson)
 
     //Coroutines
-    implementation(Deps.coroutines)
+    api(Deps.coroutines)
+    api(Deps.coroutinesJdk8)
+    api(Deps.coroutinesSf4j)
 }
 
 java {
