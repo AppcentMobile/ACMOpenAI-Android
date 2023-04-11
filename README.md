@@ -18,7 +18,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.github.AppcentMobile</groupId>
     <artifactId>ACMOpenAI-Android</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.2</version>
 </dependency>
 ```
 
@@ -35,7 +35,7 @@ allprojects {
 }
 
 dependencies {
-   implementation 'com.github.AppcentMobile:ACMOpenAI-Android:1.0.0'
+   implementation 'com.github.AppcentMobile:ACMOpenAI-Android:1.0.2'
 }
 ```
 ## Usage
@@ -60,7 +60,7 @@ val response = openApi.chat().createChatCompletion(
 )
 ```
 ## Stream support 🚀🚀
-```Chat``` and ```Completions``` apis has ```stream```property to provide server-sent events to collectors.
+```Chat``` and ```Completions``` apis has ```stream``` property to provide server-sent events to collectors.
 
 ```kotlin
 val openApi = ACMOpenAI.Builder()
