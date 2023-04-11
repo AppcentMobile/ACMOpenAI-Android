@@ -10,6 +10,8 @@ object Versions {
 
 object Deps {
     //Kotlin
+    const val kotlinJdk8 = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlinVersion}"
+    const val kotlinReflect = "org.jetbrains.kotlin:kotlin-reflect:${Versions.kotlinVersion}"
     const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutinesVersion}"
     const val coroutinesJdk8 = "org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:${Versions.coroutinesVersion}"
     const val coroutinesSf4j = "org.jetbrains.kotlinx:kotlinx-coroutines-slf4j:${Versions.coroutinesVersion}"

@@ -29,19 +29,23 @@ repositories {
 }
 
 dependencies {
+    //Kotlin
+    implementation(Deps.kotlinJdk8)
+    implementation(Deps.kotlinReflect)
+
     //OkHtpp
     api(platform(Deps.okhttpBom))
     api(Deps.okhttp)
     api(Deps.okhttpLogging)
-    implementation(Deps.okhttpSSE)
+    api(Deps.okhttpSSE)
 
     //Gson
     api(Deps.gson)
 
     //Coroutines
     api(Deps.coroutines)
-    implementation(Deps.coroutinesJdk8)
-    implementation(Deps.coroutinesSf4j)
+    api(Deps.coroutinesJdk8)
+    api(Deps.coroutinesSf4j)
 }
 
 java {
